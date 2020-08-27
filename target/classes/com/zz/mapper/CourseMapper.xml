@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zz.dao.CourseDao">
+
+    <resultMap id="courseMap" type="com.zz.pojo.Course">
+        <id column="cid" property="cid"></id>
+        <result column="cname" property="cname"></result>
+    </resultMap>
+
+<select id="findById2" parameterType="integer" resultMap="courseMap">
+    select * from t_course tc
+    inner join t_select ts
+    on tc.cid = ts.cid
+    where ts.sid = #{sid}
+</select>
+
+</mapper>
